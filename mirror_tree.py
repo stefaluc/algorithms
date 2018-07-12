@@ -40,6 +40,7 @@ def main():
     f.right = TreeNode(10)
     d.left = TreeNode(11)
     d.left.left = TreeNode(12)
+    d.left.left.left = TreeNode(12)
     
     bfs(root)
     print '======'
@@ -48,6 +49,8 @@ def main():
     print getDepth(root)
     print '======'
     print largestValue(root)
+    print '======'
+    print isBalanced(root)
 
 def mirror(root):
     if root.left == None and root.right == None:
@@ -75,5 +78,14 @@ def largestValue(root):
     elif root.right is None:
         return max(root.data, largestValue(root.left))
     return max(largestValue(root.left), largestValue(root.right))
+
+def isBalanced(node):
+    if node is None:
+        return True
+
+    depthLeft = getDepth(node.left)
+    depthRight = getDepth(node.right)
+
+    return abs(depthLeft - depthRight) < 2 and isBalanced(node.left) and isBalanced(node.right)
 
 main()

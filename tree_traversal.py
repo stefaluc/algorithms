@@ -16,13 +16,8 @@ def main():
     root.right = c
     b.left = d
     b.right = e
-    e.right = TreeNode(6)
-    e.right.right = TreeNode(7)
-    e.right.right.right = TreeNode(8)
 
     bfs(root)
-    print '===='
-    print isBalanced(root)
 
 def inorder(node):
     if node == None:
@@ -58,15 +53,5 @@ def bfs(node):
         print(i.data)
         queue.append(i.left)
         queue.append(i.right)
-
-def isBalanced(node, depth = 1):
-    if node is None:
-        return depth
-
-    depthLeft = isBalanced(node.left, depth + 1)
-    depthRight = isBalanced(node.right, depth + 1)
-    print depthRight, depthLeft
-
-    return abs(depthLeft - depthRight) < 2
 
 main()
